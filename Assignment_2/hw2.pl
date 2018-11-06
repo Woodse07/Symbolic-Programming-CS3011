@@ -2,18 +2,17 @@
 % u2v where num of 0s in u is twice the number of 1s in v.
 
 string --> string(_).
-string(N) --> u(N), two, v(N).
+string(Count) --> u(Count), two, v(Count).
 
 two --> [2].
 
 u(0) --> [].
-u(succ(succ(N))) --> [0], u(N1).
-u(N) --> [1], u(N).
+u(succ(Count)) --> [0], u(Count).
+u(Count) --> [1], u(Count).
 
 v(0) --> [].
-v(succ(N)) --> [1], v(N1).
-v(N) --> [0], v(N).
-
+v(succ(succ(Count))) --> [1], v(Count).
+v(Count) --> [0], v(Count).
 
 % QUESTION 2
 
