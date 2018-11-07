@@ -18,7 +18,6 @@ v(Count) --> [0], v(Count).
 
 
 % QUESTION 2
-
 init --> houses(_,_,_).
 
 houses(A, B, C) --> 	color(A, A1), nationality(B, B1), pet(C, C1),
@@ -63,4 +62,9 @@ pet(jaguar_snail, jaguar_done) --> [snail].
 pet(jaguar_done, done) --> [jaguar].
 pet(snail_done, done) --> [snail].
 pet(zebra_done, done) --> [zebra].
+
+
+% QUESTION 3
+mkList(0,[]).
+mkList(N, [N|L]) :- succ(X, N), mkList(X, L).
 
