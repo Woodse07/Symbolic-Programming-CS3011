@@ -65,6 +65,17 @@ pet(zebra_done, done) --> [zebra].
 
 
 % QUESTION 3
-mkList(0,[]).
-mkList(N, [N|L]) :- succ(X, N), mkList(X, L).
+mkList(1,[1]).
+mkList(N, [N|T]) :- N > 1, N1 is N - 1, mkList(N1, T).
+
+listSum(N) --> [N].
+listSum(N) --> {mkList(N, L)},{member(Num,L)}, {Rest is N - Num}, {Rest > 0},[Num], listSum(Rest).
+
+
+% This was for testing
+repeat(0) --> [].
+repeat(N) --> [N], repeat(N1), {N is N1 + 1}.
+
+
+
 
