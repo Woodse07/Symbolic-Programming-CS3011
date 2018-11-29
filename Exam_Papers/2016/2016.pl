@@ -34,3 +34,24 @@ fib(N, Fibonacci) :- NNN is N-2, fib(NNN, Fib), NN is N-1, fib(NN, Fib1), Fibona
 fibonacci(0, _, F, F).
 fibonacci(N, P1, P2, F) :- NN is N-1, FF is P1+P2, fibonacci(NN, P2, FF, F).
 fibo(N, F) :- fibonacci(N, 1, 1, F).
+
+
+
+
+
+abc --> a(N), b(M), c(K), {K >= M+N}.
+
+a(0) --> [].
+a(N) --> [a], a(NN), {N is NN + 1}.
+
+b(0) --> [].
+b(M) --> [b], b(MM), {M is MM + 1}.
+
+c(0) --> [].
+c(K) --> [c], c(KK), {K is KK + 1}.
+
+
+memberList(L,0) --> [].
+memberList(L,N) --> [X,Y], {member(X, L)}, {member(Y,L)}, memberList(L,NN), {N is NN+1}.
+
+

@@ -1,0 +1,37 @@
+QUESTION 3
+
+(a)
+abc --> a(N), b(M), c(K), {K >= M+N}.
+
+a(0) --> [].
+a(N) --> [a], a(NN), {N is NN + 1}.
+
+b(0) --> [].
+b(M) --> [b], b(MM), {M is MM + 1}.
+
+c(0) --> [].
+c(K) --> [c], c(KK), {K is KK + 1}.
+
+
+(b)
+Difference lists represent the information abou tgrammatical categories as the difference between two lists. the first list in the pair of lists is what needs to be consumed, and the second list is what should be left behind. These are useful for checking DCGs as the first list should be entirely consumed by our recognised and leave an empty list behind.
+
+
+(c)
+abc(A, D) :- a(A, B, N), b(B, C, M), c(C, D, K), K >= M+N.
+
+a(['a'|T], Res, NN) :- a(T, Res, N), NN is N + 1.
+a(Res, Res, 0).
+
+b['b'|T], Res, NN) :- b(T, Res, N), NN is N + 1.
+b(Res, Res, 0).
+
+c['c'|T], Res, NN) :- c(T, Res, N), NN is N + 1.
+c(Res, Res, 0).
+
+
+(d)
+//This doesn't work.. not sure why.
+memberList(L,0) --> [].
+memberList(L,N) --> [X,Y], {member(X, L)}, {member(Y,L)}, memberList(L,NN), {N is NN+1}.
+
