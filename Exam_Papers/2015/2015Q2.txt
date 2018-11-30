@@ -1,0 +1,45 @@
+QUESTION 2
+
+(a)
+
+member1(X, [H|T]) :- X == H; member1(X, T).
+
+
+
+(b)
+
+//Don't know this so learn it.
+It is a green cut. A cut is green if it does not change the meaning of the predicate. It should give the same result, but onl be more efficient. A cut is red if an equivelant program without the cut doesn't give the same result.
+
+In this example, the cut is green. The program will still evaluate to true if X is in the list.
+
+**note** '!' is the cut operator, basically states "if we got up to here, don't backtrack"(Won't retry)
+
+
+
+(c)
+
+last1(X, [X|[]]).
+last1(X, [H|T]) :- last1(X, T).
+
+
+
+(d)
+
+multiple(X, [_|T]) :- multiple(X, T).
+multiple(X, [X|T]) :- foundOnce(X, T).
+foundOnce(X, [_|T]) :- foundOnce(X, T).
+foundOnce(X, [X|_]).
+
+
+
+(e)
+
+//This implementation only works with numbers.. if you put in characters, you'll get errors 
+//like x\0 is not a function.
+next1(A, [H|_]) :- A is H.
+next1(A, B, [H|T]) :- A is H, next1(B, T); next1(A, B, T).
+
+
+
+(f)
