@@ -1,0 +1,46 @@
+QUESTION 3
+
+(a)
+
+u2v --> u(Count), [2], v(Count).
+
+u(0) --> [].
+u(succ(Count)) --> [1], u(Count).
+u(Count) --> [0], u(Count).
+
+v(0) --> [].
+v(Count) --> [1], v(Count).
+v(succ(succ(Count))) --> [0], v(Count).
+
+
+(b)
+
+Difference lists represent the information about gramatical categories as the difference between two lists. The first list in the pair of lists is what needs to be consumed, and the second list is what should be left behind. These are useful for checking DCGs as the first list should be entirely consumed by our recogniser and leave an empty list behind. 
+
+
+(c)
+//Learn how this is done.
+u2v(A, C) :- u(A, B, Count), [2], v(B, C, Count).
+
+u([2|List], Result, 0).
+u([1|List], Result, N) :- u(List, Result, NN), N is NN + 1.
+u([0|List], Result, N) :- u(List, Result, N).
+
+v(List, 0, List).
+v([1|List], Result, N) :- v(List, Result, N).
+v([0|List], Result, N) :- v(List, Result, NN), N is NN + 1.
+
+
+(d)
+
+mkList(1, [1]).
+mkList(N, [N|T]) :- NN is N - 1, mkList(NN, T).
+
+sum_list([], 0).
+sum_list([H|T], Sum) :- sum_list(T, OldSum), Sum is OldSum + H.
+
+
+half(Half) --> {Half >= 1, Full is Half*2, mkList(Full, L)}, genList(L, Full).
+
+genList(L, Full) --> {Full >= 0, member(X, L), Rest is Full-X}, [X], genList(L, Rest).
+genList(_, 0) --> [].

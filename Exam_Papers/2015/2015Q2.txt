@@ -43,3 +43,5 @@ next1(A, B, [H|T]) :- A is H, next1(B, T); next1(A, B, T).
 
 
 (f)
+
+//Will come back to this since its so long.
