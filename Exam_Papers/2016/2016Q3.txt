@@ -14,7 +14,7 @@ c(K) --> [c], c(KK), {K is KK + 1}.
 
 
 (b)
-Difference lists represent the information abou tgrammatical categories as the difference between two lists. the first list in the pair of lists is what needs to be consumed, and the second list is what should be left behind. These are useful for checking DCGs as the first list should be entirely consumed by our recognised and leave an empty list behind.
+Difference lists represent the information about grammatical categories as the difference between two lists. the first list in the pair of lists is what needs to be consumed, and the second list is what should be left behind. These are useful for checking DCGs as the first list should be entirely consumed by our recognised and leave an empty list behind.
 
 
 (c)
