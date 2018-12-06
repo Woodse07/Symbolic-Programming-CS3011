@@ -1,0 +1,76 @@
+QUESTION 1
+
+(a)
+
+1. X = 1+1.
+X = 1+1.
+
+2. X is 1+1.
+X = 2.
+
+3. love(john,mary).
+Undefined procedure: love/2
+
+4. assert(love(john, mary)).
+true.
+
+5. .([],.(a,Y)) = [X,a].
+Type error: 'dict' expected, found a.
+**not sure if this is correct..?**
+
+6. setof(X, X=X, L).
+L = [X].
+
+7. findall(X, X=f(X), L).
+L = [X], where X = f(X).
+
+8. X=1, X<2.
+X = 1.
+
+9. X\=2, X=1.
+false. (I think because X can unify with two, and negating this is false.)
+
+10.
+X < 2
+Arguments not sufficiently instantiated.
+
+
+
+(b)
+
+1. X=a;
+   X=b.		(when we get here !(cut operator) is called.)]
+
+2. X=Y, Y=a ;
+   X=a, Y=b ;
+   X=b, Y=a ;
+   X=Y, Y=b .
+
+3. X=Y, Y=a ;
+   X=a, Y=b .
+
+4. True.
+
+
+
+(c)
+
+bird(penguin).
+fly(bird) :- bird \= penguin.
+**not sure if this is right?**
+
+
+
+(d)
+
+1.
+succ(0).
+
+2.
+X = succ(0) ;
+X = succ(succ(0)) ;
+etc ..
+
+3.
+..Not sure about this one.
+
