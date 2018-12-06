@@ -1,0 +1,47 @@
+QUESTION 3
+
+(a)
+
+Difference lists represent the information about grammatical categories as the difference 
+between two lists. The first list in the pair of lists is what needs to be consumed, and the
+second list is what should be left behind. These are useful for checking DCGs as the first 
+list should be entirely consumed by our recogniser and leave an empty list behind.
+
+
+(b)
+
+abc --> ab(X), bc(Y).
+
+ab(0) --> [].
+ab(N) --> [a], ab(NN), [b], {N is NN + 1}.
+
+bc(0) --> [].
+bc(N) --> [b], bc(NN), [c],{N is NN + 1}.
+
+
+(c)
+
+** I don't think this is correct, not sure how to do it..**
+abc(A, C) :- ab(A, B, X), bc(B, C, Y).
+
+ab(['a'|T], Res, NN) :- ab(T, Res, N), NN is N + 1.
+ab(['b'|T], Res, NN) :- ab(T, Res, N), NN is N + 1.
+ab(Res, Res, 0).
+
+bc(['b'|T], Res, NN) :- bc(T, Res, N), NN is N + 1.
+bc(['c'|T], Res, NN) :- bc(T, Res, N), NN is N + 1.
+bc(Res, Res, 0).
+
+
+(d)
+
+** Doesn't really work as intended..**
+abc2(Count) --> ab(X), bc(Y), {Count >= X + X + Y + Y}.
+
+ab2(0) --> [].
+ab2(N) --> [a], ab(NN), [b], {N is NN + 1}.
+
+bc2(0) --> [].
+bc2(N) --> [b], bc(NN), [c],{N is NN + 1}.
+
+

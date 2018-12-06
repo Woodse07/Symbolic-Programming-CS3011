@@ -65,3 +65,26 @@ harmonichelper(N, AccNum, H, H) :-
 
 
 
+
+abc --> ab(X), bc(Y).
+
+ab(0) --> [].
+ab(N) --> [a], ab(NN), [b], {N is NN + 1}.
+
+bc(0) --> [].
+bc(N) --> [b], bc(NN), [c],{N is NN + 1}.
+
+
+abc2(Count) --> ab(X), bc(Y), {Count >= X + X + Y + Y}.
+
+ab2(0) --> [].
+ab2(N) --> [a], ab(NN), [b], {N is NN + 1}.
+
+bc2(0) --> [].
+bc2(N) --> [b], bc(NN), [c],{N is NN + 1}.
+
+
+
+
+
+
