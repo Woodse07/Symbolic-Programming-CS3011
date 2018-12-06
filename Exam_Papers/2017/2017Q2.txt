@@ -1,0 +1,55 @@
+QUESTION 2
+
+(a)
+
+sum1([], 0).
+sum1([H|T], Sum) :- sum1(T, OldSum), Sum is OldSum + H.
+
+
+(b)
+
+Tail-recursive predicate, is a predicate whose final clause is a recursive call to itself.
+
+length1(List, N) :- lengthhelper(List, 0, N).
+lengthhelper([], N, N).
+lengthhelper([H|T], Acc, N) :- NewAcc is Acc + 1, lengthhelper(T, NewAcc, N).
+
+
+(c)
+
+**Should have used the findall predicate here..**
+split(X, List, Small, Big) :- 
+	member(X, List),
+	splithelper(X, List, [], [], Small, Big).
+
+splithelper(_, [], Small, Big, Small, Big).
+splithelper(X, [H|T], S, B, Small, Big) :-
+	H < X, splithelper(X, T, [H|S], B, Small, Big);
+	H > X, splithelper(X, T, S, [H|B], Small, Big);
+	H = X, splithelper(X, T, S, B, Small, Big).
+
+
+(d)
+
+median(List, Median) :- 
+	length1(List, N), 
+	1 is mod(N, 2),
+	I is floor(N/2),
+	findNum(List, I, Median).
+
+findNum([H|T], 0, H).
+findNum([H|T], I, Median) :- findNum(T, II, Median), I is II + 1.
+
+
+(e)
+
+**This works with the side effect of reversing the list.**
+remove(X, List, Rest) :- member(X, List), listBuilder(X, List, [], Rest).
+
+listBuilder(X, [], Rest, Rest).
+listBuilder(X, [H|T], Acc, Rest) :-
+	X \= H -> listBuilder(X, T, [H|Acc], Rest);
+	listBuilder(X, T, Acc, Rest).
+
+(f)
+don't really understand this question.

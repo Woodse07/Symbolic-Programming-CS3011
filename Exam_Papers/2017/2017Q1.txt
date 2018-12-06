@@ -1,0 +1,55 @@
+QUESTION 1
+
+(a)
+
+(i)
+false.
+
+(ii)
+Does not terminate.
+
+(iii)
+Does not terminate.
+
+(iv)
+L = [].
+
+(v)
+false.
+
+(vi)
+X = [c].
+
+
+
+(b)
+
+Anonymous variable: every occurence of _ denotes a distinct variable. Called a singleton variable because it only ever appears once in a clause.
+
+
+
+(c)
+
+lessSome([H|T], [H1|T1]) :- number(H), cycle(H, [H1|T1]) ; lessSome(T, T1).
+cycle(Num, [H|T]) :- number(H), Num < H ; cycle(Num , T).
+
+
+
+(d)
+
+lessAll([], L).
+lessAll([H|T], L) :- number(H), allCycle(H, L), lessAll(T, L).
+allCycle(_, []).
+allCycle(Num, [H|T]) :- number(H), Num < H, allCycle(Num , T).
+
+
+
+(e)
+
+(i)
+
+append1([], List, List).
+append1([H|T], List2, [H|List3]) :- append1(T, List2, List3).
+
+
+(ii)
