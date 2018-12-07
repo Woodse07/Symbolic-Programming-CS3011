@@ -62,6 +62,15 @@ listBuilder(X, [H|T], Acc, Rest) :-
 
 
 
+nm --> zero(N), one(M), {M is N + N}.
+
+zero(0) --> [].
+zero(N) --> [0], zero(NN), {N is NN + 1}.
+
+one(0) --> [].
+one(M) --> [1], one(MM), {M is MM + 1}.
+
+
 
 
 

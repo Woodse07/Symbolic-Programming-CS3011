@@ -1,0 +1,33 @@
+QUESTION 3.
+
+(a)
+
+nm --> zero(N), one(M), {M is N + N}.
+
+zero(0) --> [].
+zero(N) --> [0], zero(NN), {N is NN + 1}.
+
+one(0) --> [].
+one(M) --> [1], one(MM), {M is MM + 1}.
+
+
+(b)
+
+Difference lists represent the information about grammatical categories as the difference
+between two lists. The first list is what should be consumed and the second is what should
+be left behind. If sentece is accepted by the grammar, first list should be entirely 
+consumed, and the second list should be the empty list.
+
+**Not entirely sure but should be something like this..**
+nm(A, C) :- zero(A, B, N), one(B, C, M), M is N + N.
+
+zero(['0'|T], Ret, N) :- zero(T, Ret, NN), N is NN + 1.
+zero(Ret, Ret, 0).
+
+one(['1'|T], Ret, N) :- one(T, Ret, NN), N is NN + 1.
+one(Ret, Ret, 0).
+
+
+
+
+
