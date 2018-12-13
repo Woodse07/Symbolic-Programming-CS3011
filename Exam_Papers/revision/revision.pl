@@ -170,13 +170,161 @@ permute((H|T), L2) :- remove(H, L2, T).
 
 
 
+%Difference lists represent the information about gramatical categories as the difference
+%between two lists. The first of the pair of lists is what should be consumed and the second
+%is what is left behind. This is useful for checking dcg's since the first list should be 
+%entirely consumed by our recognised and the second is what is left behind.
+
+
+%2016
+% X = 1.
+% False.
+% False.
+% True.
+% False.
+% True.
+% True.
+% False.
+% not instantiated.
+% L = [].
+
+isSet([]).
+isSet([H|T]) :- not(member(H, T)), isSet(T).
+
+
+moreThanOne([H|T]) :- T \= [], not(member(H, T)) ; moreThanOne(T).
+
+
+moreThan(List, Num) :- moreThanHelp(List, 1, Num).
+
+moreThanHelp([], N, Num) :- N > Num.
+moreThanHelp([H|T], N, Num) :-
+	T \= [], 
+	not(member(H,T)),
+	NN is N + 1,
+	moreThanHelp(T, NN, Num) ;
+	moreThanHelp(T, N, Num).
+
+
+
+fac(0, 1).
+fac(N, Factorial) :-
+	fac(NN, NewFac),
+	N is NN + 1,
+	Factorial is NewFac * N.
+
+
+
+fachelp(0, Fac, Fac).
+fachelp(N, Acc, Fac) :-
+	NewAcc is Acc * N,
+	NN is N - 1,
+	fachelp(NN, NewAcc, Fac).
+
+fac1(N, Factorial) :- fachelp(N, 1, Factorial).
+
+
+fib(0, 0).
+fib(1, 1).
+fib(N, Fibonacci) :- 
+	NN is N - 1,
+	fib(NN, Fibo1),
+	NNN is N - 2,
+	fib(NNN, Fibo2),
+	Fibonacci is Fibo1 + Fibo2.
+
+
+fibohelp(0, _, Fibonacci, Fibonacci).
+fibohelp(N, Acc, Acc1, Fibonacci) :-
+	NN is N - 1,
+	NewAcc is Acc1,
+	NewAcc1 is Acc + Acc1,
+	fibohelp(NN, NewAcc, NewAcc1, Fibonacci).
+
+fibo(N, Fibonacci) :- fibohelp(N, 0, 1, Fibonacci).
+
+
+
+%2015
+% i is a fact
+% ii is a fact
+% iii is a rule
+% iii is best translation.
+
+%False.
+%X = 3+2.
+%False.
+%Not instantiated.
+%X = 5.
+%False.
+%True.
+%True.
+
+isnumbers([]).
+isnumbers([H|T]) :- number(H), isnumbers(T).
+
+splitter(N, List, Small, Big) :-
+	isnumbers(List), 
+	findall(X, (member(X, List), X < N), Small),
+	findall(X, (member(X,List), X >= N), Big).
 
 
 
 
+sumOfPowers(N, SoP) :- 
+	N > 0, 
+	sop(N, 0, SoP).
+
+sop(0, SoP, SoP).
+sop(N, Acc, SoP) :-	
+	NN is N - 1,
+	Temp is N ** N,
+	NewAcc is Acc + Temp,
+	sop(NN, NewAcc, SoP). 
+	
 
 
+member(X, [H|T]) :- X is H, member(X,T).
 
+%Green, doesn't effect outcome of the program and is more efficient. 
+
+last(X, [X|[]]).
+last(X, [H|T]) :- last(X, T).
+
+
+multiple(X, [H|T]) :- X is H, multiple2(X, T) ; multiple(X, T).
+multiple2(X, [H|T]) :- X is H ; multiple2(X, T).
+
+
+next(A,B, [A,B|T]).
+next(A,B, [H|T]) :- next(A,B, T).
+
+
+u2v --> u(Count), [2], v(Count).
+
+u(0) --> [].
+u(N) --> [0], u(N).
+u(N) --> [1], u(NN), {N is NN + 1}.
+
+v(0) --> [].
+v(N) --> [1], v(N).
+v(N) --> [0], v(NNN), {N is NNN + 2}.
+
+
+%Difference list represent the information of gramatical categories as the difference between
+%two lists, this first of the pair of lists is what should be consumed, and the second is 
+%what is left behind. Useful for DCGS since the first list should be completely consumed by
+%out recognised, and the second list should be empty.
+
+u2v2(A,C) :- u(A,B,Count), v(B,C,Count).
+
+u([2|T], Res, 0).
+u([0|T], Res, N) :- u(T, Res, N).
+u([1|T], Res, N) :- u(T, Res, NN), N is NN + 1.
+
+v(Res, Res, 0).
+v([1|T], Res, N) :- v(T, Res, N).
+v([0|T], Res, N) :- v(T, Res, NNN), N is NNN + 2.
 
 
 
