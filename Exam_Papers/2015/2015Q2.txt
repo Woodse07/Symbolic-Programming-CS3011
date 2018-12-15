@@ -9,7 +9,7 @@ member1(X, [H|T]) :- X == H; member1(X, T).
 (b)
 
 //Don't know this so learn it.
-It is a green cut. A cut is green if it does not change the meaning of the predicate. It should give the same result, but onl be more efficient. A cut is red if an equivelant program without the cut doesn't give the same result.
+It is a green cut. A cut is green if it does not change the meaning of the predicate. It should give the same result, but only be more efficient. A cut is red if an equivelant program without the cut doesn't give the same result.
 
 In this example, the cut is green. The program will still evaluate to true if X is in the list.
 

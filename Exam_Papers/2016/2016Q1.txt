@@ -23,8 +23,8 @@ false.				//Why? 'A \= B' is equivalent to 'not (A = B)' X would unify with f(X)
 true.				//Why? These terms can't unify, and the opposite of this is true.
 
 (vii) [1|[2,3]] = .(1,.(2,[3])).
-false.				//Why? Answer is false.. but I get an error. I think maybe the first one
-					//is the same as [1,2,3] but the second is [1,2,[3]]. Not sure.
+true.				// '.' acts as cons operator in haskell.
+
 
 (viii) X == f(X).	
 false.				//Why? '==' just performs a check to see if both arguments are equivelant

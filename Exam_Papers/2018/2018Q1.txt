@@ -15,8 +15,7 @@ Undefined procedure: love/2
 true.
 
 5. .([],.(a,Y)) = [X,a].
-Type error: 'dict' expected, found a.
-**not sure if this is correct..?**
+Y = X, X = [].
 
 6. setof(X, X=X, L).
 L = [X].

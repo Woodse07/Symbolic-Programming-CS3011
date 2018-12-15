@@ -1,0 +1,6 @@
+Implement a program that provides the following operations on a binary tree.
+insert adds an integer x into a binary tree T to give a binary tree R.
+search returns true if x is contained in the binary tree T.
+preorder lists the nodes of the binary tree T using preorder traversal.
+inorder lists the nodes of the binary tree T using inorder traversal.
+postorder lists the nodes of the binary tree T using postorder traversal.
